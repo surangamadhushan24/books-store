@@ -11,16 +11,6 @@ import com.bookstore.entity.Book;
 @Repository
 public interface BookRepository extends JpaRepository<Book,Long> {
 
-    // Find book by title
-    Optional<Book> findByTitle(String title);
-    
-    // Find books by author
-    List<Book> findByAuthor(String author);
-    
-    // Find books by ISBN
-    Optional<Book> findByIsbn(String isbn);
-    
-    // Find books with price greater than specified amount
-    List<Book> findByPriceGreaterThan(Double price);
+  
     
 }
