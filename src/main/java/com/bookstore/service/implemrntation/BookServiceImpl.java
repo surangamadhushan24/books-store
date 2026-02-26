@@ -1,6 +1,7 @@
 package com.bookstore.service.implemrntation;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.bookstore.entity.Book;
 import com.bookstore.repository.BookRepository;
@@ -35,12 +36,23 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book updateBook(Book book) {
+        Optional<Book> existingBookOpt = bookRepository.findById(book.getId());
+        if (existingBookOpt.isPresent()) {
+            Book existingBook = existingBookOpt.get();
+            existingBook.setTitle(book.getTitle());
+            existingBook.setAuthor(book.getAuthor());
+            existingBook.setDescription(book.getDescription());
+            existingBook.setGenre(book.getGenre());
+           
+            return bookRepository.save(existingBook);
+        }
         
+        return null;
     }
 
     @Override
     public void deleteBook(Long id) {
-        return bookRepository.deleteById(id);
+        bookRepository.deleteById(id);
     }
 
 }
