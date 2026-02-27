@@ -3,10 +3,13 @@ package com.bookstore.service.implemrntation;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import com.bookstore.entity.Book;
 import com.bookstore.repository.BookRepository;
 import com.bookstore.service.BookService;
 
+@Service
 public class BookServiceImpl implements BookService {
 
     private final BookRepository bookRepository;
